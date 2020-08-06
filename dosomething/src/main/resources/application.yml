@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: web
+  #设置static目录为默认的访问路径
+  mvc:
+    static-path-pattern: /static/**
+  #配置thymeleaf 当使用thymeleaf但是不配置模板的时候 本模块的所有controller转发，重定向都会错误
+  #并且配置模板后(定义了前后缀) 本模块中所有的html 将只能在templates目录下使用
+#  thymeleaf:
+#    mode: HTML
+#    encoding: UTF-8
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    #使用模板路径
+#    check-template-location: true
+#    cache: false
+

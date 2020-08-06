@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/lib/layui/css/layui.css">
+    <script src="/static/lib/layui/layui.js"></script>
+    <script src="/static/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="layui-form-item" style="margin-top: 20px">
+        <label class="layui-form-label">表名</label>
+        <div class="layui-input-block">
+            <input  id="tableName" type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" style="width: auto">
+        </div>
+    </div>
+    <input id="file" name="file" type="file" style="display: none"/>
+    <button type="button" class="layui-btn" id="upFile" style="margin-left: 110px">
+        <i class="layui-icon">&#xe67c;</i>上传文件
+    </button>
+    <button type="button" class="layui-btn" id="loadSQl" style="margin-left: 110px">
+        <i class="layui-icon">&#xe67c;</i>显示SQL
+    </button>
+    <div class="layui-form-item layui-form-text" style="margin-top: 20px" >
+        <label class="layui-form-label">SQl语句</label>
+        <div class="layui-input-block">
+            <textarea id="sql" name="sql" placeholder="请输入内容" class="layui-textarea" style="width: 500px"></textarea>
+        </div>
+    </div>
+</form>
+
+</body>
+<script>
+    $("#upFile").click(function () {
+        $("#file").click();
+    });
+
+    //使用ajax提交文件
+    $("#loadSQl").click(function () {
+        let f = $("#file")[0].files[0];
+        console.log(f);
+        let formData = new FormData();//使用js新建一个form表单 或者使用现有的表单DOM对象  let formData = new FormData($("#formId")[0])两种方式有区别，后续添加数据也不一样;
+        formData.append('file',f);//这里添加的名称要与后台springMVC接收方法中的参数名一致
+        formData.append('tableName', $("#tableName").val());
+        $.ajax({
+            url:'http://localhost:8080/upload/parseExcel',
+            type: 'post',
+            data: formData,
+            processData : false, // 使数据不做处理
+            contentType : false, // 不要设置Content-Type请求头
+            success: function (res) {
+                console.log(!res?'null':res,typeof res);
+                $("#sql").text(res);
+            },
+            error: function () {
+                console.log("error");
+            }
+        })
+    });
+</script>
+</html>
