@@ -24,7 +24,7 @@
     <div class="layui-form-item layui-form-text" style="margin-top: 20px" >
         <label class="layui-form-label">SQl语句</label>
         <div class="layui-input-block">
-            <textarea id="sql" name="sql" placeholder="请输入内容" class="layui-textarea" style="width: 500px"></textarea>
+            <textarea id="sql" name="sql" class="layui-textarea"></textarea>
         </div>
     </div>
 </form>
@@ -37,6 +37,15 @@
 
     //使用ajax提交文件
     $("#loadSQl").click(function () {
+        //先验证表名和文件是否存在
+        if(!$("#tableName").val()){
+            alert("请先输入表名");
+            return;
+        }
+        if(!$("#file")[0].files[0]){
+            alert("请先上传文件");
+            return;
+        }
         let f = $("#file")[0].files[0];
         console.log(f);
         let formData = new FormData();//使用js新建一个form表单 或者使用现有的表单DOM对象  let formData = new FormData($("#formId")[0])两种方式有区别，后续添加数据也不一样;
@@ -49,8 +58,14 @@
             processData : false, // 使数据不做处理
             contentType : false, // 不要设置Content-Type请求头
             success: function (res) {
-                console.log(!res?'null':res,typeof res);
-                $("#sql").text(res);
+                console.log(res);
+                if(res){
+                    if (res.state ==1){
+                        $("#sql").text(res.data);
+                    }else{
+                        console.log(res.message);
+                    }
+                }
             },
             error: function () {
                 console.log("error");
