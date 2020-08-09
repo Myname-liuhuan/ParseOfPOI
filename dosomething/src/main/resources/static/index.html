@@ -3,6 +3,12 @@
     <meta charset="UTF-8">
     <title>首页</title>
     <link rel="stylesheet" href="/static/lib/layui/css/layui.css">
+    <style type="text/css">
+        #codeTextarea{width: 500px;height: 310px;}
+        .textAreaWithLines{font-family: courier;border: 1px solid #ddd;}
+        .textAreaWithLines textarea,.textAreaWithLines div{border: 0px;line-height: 120%;font-size: 12px;}
+        .lineObj{color: #666;}
+    </style>
     <script src="/static/lib/layui/layui.js"></script>
     <script src="/static/js/jquery-3.3.1.js"></script>
 </head>
@@ -24,13 +30,16 @@
     <div class="layui-form-item layui-form-text" style="margin-top: 20px" >
         <label class="layui-form-label">SQl语句</label>
         <div class="layui-input-block">
-            <textarea id="sql" name="sql" class="layui-textarea"></textarea>
+            <textarea id="sql" name="sql" class="layui-textarea" style="width: 1000px"></textarea>
         </div>
     </div>
 </form>
 
 </body>
 <script>
+    var lineObjOffsetTop = 2;
+    createTextAreaWithLines('sql');
+
     $("#upFile").click(function () {
         $("#file").click();
     });
@@ -72,5 +81,46 @@
             }
         })
     });
+
+    //文本域添加行号
+    function createTextAreaWithLines(id)
+    {
+        var el = document.createElement('DIV');
+        var ta = document.getElementById(id);
+        ta.parentNode.insertBefore(el,ta);
+        el.appendChild(ta);
+        el.className='textAreaWithLines';
+        el.style.width = (ta.offsetWidth + 30) + 'px';
+        ta.style.position = 'absolute';
+        ta.style.left = '30px';
+        el.style.height = (ta.offsetHeight + 2) + 'px';
+        el.style.overflow='hidden';
+        el.style.position = 'relative';
+        el.style.width = (ta.offsetWidth + 30) + 'px';
+        var lineObj = document.createElement('DIV');
+        lineObj.style.position = 'absolute';
+        lineObj.style.top = lineObjOffsetTop + 'px';
+        lineObj.style.left = '0px';
+        lineObj.style.width = '27px';
+        el.insertBefore(lineObj,ta);
+        lineObj.style.textAlign = 'right';
+        lineObj.className='lineObj';
+        var string = '';
+        for(var no=1;no<100;no++){
+            if(string.length>0)string = string + '<br>';
+            string = string + no;
+        }
+        ta.onkeydown = function() { positionLineObj(lineObj,ta); };
+        ta.onmousedown = function() { positionLineObj(lineObj,ta); };
+        ta.onscroll = function() { positionLineObj(lineObj,ta); };
+        ta.onblur = function() { positionLineObj(lineObj,ta); };
+        ta.onfocus = function() { positionLineObj(lineObj,ta); };
+        ta.onmouseover = function() { positionLineObj(lineObj,ta); };
+        lineObj.innerHTML = string;
+    }
+    function positionLineObj(obj,ta)
+    {
+        obj.style.top = (ta.scrollTop * -1 + lineObjOffsetTop) + 'px';
+    }
 </script>
 </html>
