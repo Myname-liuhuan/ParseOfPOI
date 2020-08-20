@@ -33,6 +33,9 @@
             <textarea id="sql" name="sql" class="layui-textarea" style="width: 1000px"></textarea>
         </div>
     </div>
+    <button type="button" class="layui-btn" id="insertSQL" style="margin-left: 110px">
+        <i class="layui-icon">&#xe67c;</i>完成
+    </button>
 </form>
 
 </body>
@@ -81,6 +84,26 @@
             }
         })
     });
+
+    $("#insertSQL").click(function () {
+        let text = $("#sql").text();
+        if (text){
+            $.ajax({
+                url:"http://localhost:8080/upload/doSql",
+                type:'post',
+                data: {"sql":text},
+                success:function (res) {
+                    console.log(res);
+                },
+                error:function () {
+                    console.log("请求失败!");
+                }
+            });
+        }else{
+            alert("请先获取到sql语句");
+        }
+    });
+
 
     //文本域添加行号
     function createTextAreaWithLines(id)

@@ -82,9 +82,9 @@ public class ExcelOperation extends PoiFactory {
         }
         String createSql = " create table " + tableName + "(\nid VARCHAR(200),\n";
         for (int i = 0; i < list.size(); i++) {
-            createSql += getFirstSpell(list.get(i)) + " VARCHAR(200) COMMIT '" + list.get(i) + "'" + (i == list.size() - 1?"":",\n");
+            createSql += getFirstSpell(list.get(i)) + " VARCHAR(200) COMMENT '" + list.get(i) + "'" + (i == list.size() - 1?"":",\n");
         }
-        createSql += ")";
+        createSql += ");";
         return createSql;
     }
 

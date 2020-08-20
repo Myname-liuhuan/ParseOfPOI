@@ -2,6 +2,7 @@ package com.example.doexcel.controller;
 
 import com.example.doexcel.service.impl.UpLoadService;
 import com.example.doexcel.utils.Encapsulation;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,21 @@ public class UpLoadController {
             e.printStackTrace();
         }
         return map;
+    }
+
+    /**
+     * 将被确认过的sql到数据库进行插入。
+     * @param sql
+     * @return
+     */
+    @RequestMapping("doSql")
+    @ResponseBody
+    public boolean doSql(String sql){
+        System.out.println(sql);
+        if(sql == null){
+            return false;
+        }
+        return upLoadService.insertSql(sql);
     }
 
 }
