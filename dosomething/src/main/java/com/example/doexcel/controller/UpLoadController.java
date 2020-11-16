@@ -1,8 +1,8 @@
 package com.example.doexcel.controller;
 
-import com.example.doexcel.service.impl.UpLoadService;
+import com.example.doexcel.service.UpLoadService;
 import com.example.doexcel.utils.Encapsulation;
-import org.apache.ibatis.annotations.Param;
+import com.example.doexcel.utils.StateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,14 +32,8 @@ public class UpLoadController {
      */
     @RequestMapping("parseExcel")
     @ResponseBody
-    public Map<String, Object> parseExcel(@RequestParam("file") MultipartFile file, String tableName){
-        Map<String, Object> map = new HashMap<>();
-        try {
-            map = Encapsulation.toMap(1,upLoadService.parseExcel(file, tableName));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return map;
+    public Map<String, Object> parseExcel(@RequestParam("file") MultipartFile file, String tableName) throws Exception {
+        return upLoadService.parseExcel(file, tableName);
     }
 
     /**

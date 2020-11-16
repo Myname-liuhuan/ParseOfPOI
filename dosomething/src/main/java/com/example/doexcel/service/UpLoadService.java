@@ -1,8 +1,9 @@
-package com.example.doexcel.service.impl;
+package com.example.doexcel.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * @author 刘欢
@@ -17,7 +18,7 @@ public interface UpLoadService {
 	 * @return
 	 * @throws IOException
 	 */
-    String parseExcel(MultipartFile file, String tableName) throws IOException;
+    Map<String, Object> parseExcel(MultipartFile file, String tableName) throws Exception;
 
 	/**
 	 * 根据sql向数据库中插入数据

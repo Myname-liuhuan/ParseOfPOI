@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dosomething</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <!--修改jdk的版本-->
     <properties>
@@ -93,5 +93,15 @@
 
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.example.doexcel.DoStart</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

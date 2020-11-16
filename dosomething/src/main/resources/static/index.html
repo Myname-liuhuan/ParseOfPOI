@@ -63,8 +63,9 @@
         let formData = new FormData();//使用js新建一个form表单 或者使用现有的表单DOM对象  let formData = new FormData($("#formId")[0])两种方式有区别，后续添加数据也不一样;
         formData.append('file',f);//这里添加的名称要与后台springMVC接收方法中的参数名一致
         formData.append('tableName', $("#tableName").val());
+
         $.ajax({
-            url:'http://localhost:8080/upload/parseExcel',
+            url:'http://' + window.location.host + '/upload/parseExcel',
             type: 'post',
             data: formData,
             processData : false, // 使数据不做处理
@@ -74,6 +75,7 @@
                 if(res){
                     if (res.state ==1){
                         $("#sql").text(res.data);
+                        console.log("文件上传成功");
                     }else{
                         console.log(res.message);
                     }
@@ -89,14 +91,16 @@
         let text = $("#sql").text();
         if (text){
             $.ajax({
-                url:"http://localhost:8080/upload/doSql",
+                url:'http://' + window.location.host +'/upload/doSql',
                 type:'post',
                 data: {"sql":text},
                 success:function (res) {
-                    console.log(res);
+                    if (res == true){
+                        alert("成功");
+                    }
                 },
                 error:function () {
-                    console.log("请求失败!");
+                   alert("请求失败!");
                 }
             });
         }else{

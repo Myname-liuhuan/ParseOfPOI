@@ -20,7 +20,7 @@ import java.util.UUID;
  * 待处理问题：
  * 1,Cell为属性名称或者属性值时为空,是否会造成列和对应值错位
  * 2,如果字段名得到的拼音首字符冲突该如何解决
- * 操作Excel的类
+ * 操作Excel的类 2003版本 xls
  * @author liuhuan
  */
 public class ExcelOperation extends PoiFactory {
@@ -32,7 +32,7 @@ public class ExcelOperation extends PoiFactory {
     public static int UPLOAD = 0;
     public static int JAR = 1;
 
-    private HSSFWorkbook wb = null;
+    private HSSFWorkbook hwb = null;
     private List<String> list = new ArrayList<>();
     private int colIndex;
     private int sheetIndex = 0;
@@ -40,7 +40,7 @@ public class ExcelOperation extends PoiFactory {
     public ExcelOperation(String filePath, int colNameIndex) {
         super(filePath);
         try {
-            wb = new HSSFWorkbook(pfs);
+            hwb = new HSSFWorkbook(pfs);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +55,7 @@ public class ExcelOperation extends PoiFactory {
     public ExcelOperation(InputStream inputStream){
         super(inputStream);
         try {
-            wb = new HSSFWorkbook(pfs);
+            hwb = new HSSFWorkbook(pfs);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -109,7 +109,7 @@ public class ExcelOperation extends PoiFactory {
         insertSql.deleteCharAt(insertSql.lastIndexOf(","));
         insertSql.append(") values\n('");
 
-        Sheet sheet = wb.getSheetAt(sheetIndex);
+        Sheet sheet = hwb.getSheetAt(sheetIndex);
         int rowStartIndex = colIndex + 1;
         int rowEndIndex = sheet.getLastRowNum();
         for (int i = rowStartIndex; i <= rowEndIndex; i++){
@@ -144,7 +144,7 @@ public class ExcelOperation extends PoiFactory {
             return null;
         }
         //先读取列名
-        Sheet sheet = wb.getSheetAt(sheetIndex);
+        Sheet sheet = hwb.getSheetAt(sheetIndex);
         Row row = sheet.getRow(colNameIndex);
         int startColIndex = row.getFirstCellNum();
         int endColIndex = row.getLastCellNum();
