@@ -113,7 +113,7 @@ public class ExcelOperation extends PoiFactory {
         int rowStartIndex = colIndex + 1;
         int rowEndIndex = sheet.getLastRowNum();
         for (int i = rowStartIndex; i <= rowEndIndex; i++){
-            insertSql.append(UUID.randomUUID().toString() + "','");
+            insertSql.append(UUID.randomUUID().toString().replaceAll("-","") + "','");
             Row row = sheet.getRow(i);
             int colStartIndex = row.getFirstCellNum();
             int colEndIndex = list.size();
