@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>dosomething</module>
+        <module>WeChatControl</module>
     </modules>
 
     <packaging>pom</packaging>

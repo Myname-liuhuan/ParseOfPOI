@@ -1,0 +1,8 @@
+# Default ignored files
+/workspace.xml
+../dosomething/target/
+../.idea/
+../newparent.iml
+../dosomething/src/main/resources/templates/
+../dosomething/src/test/
+../src/
