@@ -3,9 +3,9 @@
 
 <mapper namespace="com.example.mapper.MessageMapper">
 
-    <sql id="insertOfEntity">
-        insert into messagelog(id,createtime,ToUserName,FromUserName,CreateTime,MsgType,Content,MsgId,PicUrl,MediaId,Format,Recognition,ThumbMediaId,Location_X,Location_Y,Scale,Label,Title,Description,Url) values
-        (#{id}, #{createtime}, #{ToUserName}, #{FromUserName}, #{CreateTime}, #{MsgType}, #{Content}, #{MsgId}, #{PicUrl}, #{MediaId}, #{Format}, #{Recognition}, #{ThumbMediaId}, #{Location_X}, #{Location_Y}, #{Scale}, #{Label}, #{Title}, #{Description}, #{Url})
-    </sql>
+    <insert id="insertOfEntity" keyProperty="id">
+        insert into messagelog(id,create_time,ToUserName,FromUserName,CreateTime,MsgType,Content,MsgId,PicUrl,MediaId,Format,Recognition,ThumbMediaId,Location_X,Location_Y,Scale,Label,Title,Description,Url) values
+        (#{id}, #{create_time}, #{ToUserName}, #{FromUserName}, #{CreateTime}, #{MsgType}, #{Content}, #{MsgId}, #{PicUrl}, #{MediaId}, #{Format}, #{Recognition}, #{ThumbMediaId}, #{Location_X}, #{Location_Y}, #{Scale}, #{Label}, #{Title}, #{Description}, #{Url})
+    </insert>
 
 </mapper>

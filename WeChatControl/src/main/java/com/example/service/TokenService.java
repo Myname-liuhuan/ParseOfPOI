@@ -1,5 +1,7 @@
 package com.example.service;
 
+import com.example.entity.MessageEntity;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -14,12 +16,18 @@ public interface TokenService {
 	 */
 	String parseToken(HttpServletRequest request);
 
-
 	/**
 	 * 当微信公众号收到消息的时候
 	 * @param request
 	 * @return
 	 */
 	String parseMessage(HttpServletRequest request);
+
+	/**
+	 * 重载 用实体类来接收参数
+	 * @param messageEntity
+	 * @return
+	 */
+	String parseMessage(MessageEntity messageEntity);
 
 }

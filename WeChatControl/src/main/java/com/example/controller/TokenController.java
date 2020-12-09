@@ -35,15 +35,15 @@ public class TokenController {
 
 	/**
 	 * 以post方法过来的是当用户给公众号发消息的时候，微信会以xml的形式将数据post到相同的url上
-	 * @param request
+	 * @param messageEntity
 	 * @return
 	 */
 	@RequestMapping(value="", method = RequestMethod.POST)
 	@ResponseBody
 	public String parseMessage(@RequestBody MessageEntity messageEntity){
 		System.out.println(messageEntity);
-		return "success";
-		//return tokenService.parseMessage(request);
+		//return "success";
+		return tokenService.parseMessage(messageEntity);
 	}
 
 }
