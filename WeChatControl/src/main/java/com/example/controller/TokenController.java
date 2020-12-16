@@ -2,6 +2,8 @@ package com.example.controller;
 
 import com.example.entity.MessageEntity;
 import com.example.service.TokenService;
+import com.example.service.WeChatService;
+import com.example.task.WeChatTokenTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ public class TokenController {
 
 	@Autowired
 	TokenService tokenService;
+
 	/**
 	 * 验证token方法
 	 * 微信会以get方式请求过来
@@ -42,8 +45,6 @@ public class TokenController {
 	@ResponseBody
 	public String parseMessage(@RequestBody MessageEntity messageEntity){
 		System.out.println(messageEntity);
-		//return "success";
 		return tokenService.parseMessage(messageEntity);
 	}
-
 }
