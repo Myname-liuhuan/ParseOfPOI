@@ -43,6 +43,7 @@ public class MessageEntity {
 	 * shortvideo:小视频
 	 * location:地理位置
 	 * link:链接
+	 * event:菜单栏触发
 	 */
 	private String MsgType;
 
@@ -115,6 +116,32 @@ public class MessageEntity {
 	 * 链接消息的消息链接
 	 */
 	private String Url;
+
+	/**
+	 * 当消息类型为event菜单事件类型的时候，该指端存储事件的种类
+	 */
+	private String Event;
+
+	/**
+	 * 菜单中事件设置的key值
+	 */
+	private String EventKey;
+
+	public String getEvent() {
+		return Event;
+	}
+
+	public void setEvent(String event) {
+		Event = event;
+	}
+
+	public String getEventKey() {
+		return EventKey;
+	}
+
+	public void setEventKey(String eventKey) {
+		EventKey = eventKey;
+	}
 
 	public String getToUserName() {
 		return ToUserName;

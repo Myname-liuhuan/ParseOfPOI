@@ -47,4 +47,10 @@ public class TokenController {
 		System.out.println(messageEntity);
 		return tokenService.parseMessage(messageEntity);
 	}
+
+	/*@RequestMapping(value="", method = RequestMethod.POST)
+	@ResponseBody
+	public String parseMessage(HttpServletRequest request){
+		return tokenService.parseMessage(request);
+	}*/
 }
