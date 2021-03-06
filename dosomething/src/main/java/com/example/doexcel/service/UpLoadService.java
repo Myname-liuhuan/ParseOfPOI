@@ -16,7 +16,7 @@ public interface UpLoadService {
 	 * @param file
 	 * @param tableName
 	 * @return
-	 * @throws IOException
+	 * @throws Exception
 	 */
     Map<String, Object> parseExcel(MultipartFile file, String tableName) throws Exception;
 
