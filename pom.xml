@@ -10,6 +10,7 @@
     <modules>
         <module>dosomething</module>
         <module>WeChatControl</module>
+        <module>GroupMap</module>
     </modules>
 
     <packaging>pom</packaging>
