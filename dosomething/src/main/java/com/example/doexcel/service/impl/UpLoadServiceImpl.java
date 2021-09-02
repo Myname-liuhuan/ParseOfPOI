@@ -2,9 +2,9 @@ package com.example.doexcel.service.impl;
 
 import com.example.doexcel.dao.UploadMapper;
 import com.example.doexcel.service.UpLoadService;
-import com.example.doexcel.utils.EncapsulationUtil;
 import com.example.doexcel.poi.ExcelOperation;
 import com.example.doexcel.poi.ExcelOperationXlsx;
+import com.example.utils.EncapsulationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

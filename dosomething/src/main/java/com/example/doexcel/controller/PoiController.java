@@ -36,9 +36,9 @@ public class PoiController {
      * @param filename
      * @return
      */
-    @RequestMapping("/doExcept")
+    @RequestMapping("/doExport")
     @ResponseBody
-    public Map<String, Object> doExcept(String jsonStr, String sql, String filename){
+    public Map<String, Object> doExport(String jsonStr, String sql, String filename){
         return poiService.doExcept(jsonStr, sql, filename);
     }
 
@@ -53,10 +53,10 @@ public class PoiController {
                 return;
             }
             String filename = file.getName();
+            //设置相应头，让浏览器识别为文件而不是正常的html
             response.setHeader("content-type", "application/octet-stream");
             //将文件名转化为"ISO8859-1"编码，避免下载时中文变成下划线的情况
             response.setHeader("Content-Disposition", "attachment;filename=" + new String(filename.getBytes(),"ISO8859-1"));
-            response.setContentType("application/octet-stream");
             ServletOutputStream out = response.getOutputStream();
             BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
             byte[] b = new byte[1024];

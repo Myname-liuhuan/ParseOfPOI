@@ -3,18 +3,14 @@ package com.example.doexcel.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.example.doexcel.dao.PoiMapper;
-import com.example.doexcel.poi.ExceptExcel;
+import com.example.doexcel.poi.ExportExcel;
 import com.example.doexcel.service.PoiService;
-import com.example.doexcel.utils.EncapsulationUtil;
-import com.example.doexcel.utils.StringUtil;
+
+import com.example.utils.EncapsulationUtil;
+import com.example.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +26,7 @@ public class PoiServiceImpl implements PoiService {
     PoiMapper poiMapper;
 
     @Autowired
-    ExceptExcel exUtil;
+    ExportExcel exUtil;
 
     @Override
     public String generateExcelBySql(String sql){
