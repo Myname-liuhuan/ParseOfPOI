@@ -38,7 +38,7 @@ public class WeChatTokenTask {
     }
 
     /**
-     * 每两小时重新获取一次token保存到数据库
+     * 每两小时重新获取一次token保存到全局变量
      */
     @Scheduled(cron = "0 0 0/2 * * ?")
     public void flushTokenValue(){

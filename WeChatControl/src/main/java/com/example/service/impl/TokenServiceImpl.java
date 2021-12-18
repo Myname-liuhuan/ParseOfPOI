@@ -1,7 +1,7 @@
 package com.example.service.impl;
 
 import com.example.entity.MessageEntity;
-import com.example.mapper.MessageMapper;
+import com.example.dao.MessageMapper;
 import com.example.service.TokenService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.dom4j.Document;

@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * @author 刘欢
@@ -48,9 +53,23 @@ public class TokenController {
 		return tokenService.parseMessage(messageEntity);
 	}
 
-	/*@RequestMapping(value="", method = RequestMethod.POST)
+	@RequestMapping(value="/testfile")
 	@ResponseBody
-	public String parseMessage(HttpServletRequest request){
-		return tokenService.parseMessage(request);
-	}*/
+	public String testfile(HttpServletRequest request){
+		try{
+			URL url = new URL("https://zwfw.lg.gov.cn/LGDP/LEAP/Download/lgdppic/440307/a7a5ca9369b844248398c165a76d97e9.jpg");
+			URLConnection conn = url.openConnection();
+			InputStream in = conn.getInputStream();
+			FileOutputStream out = new FileOutputStream(new File("./eee.jpg"));
+			int i = 0;
+			while((i = in.read()) != -1){
+				out.write(i);
+			}
+			out.close();
+			in.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return "没有报错";
+	}
 }

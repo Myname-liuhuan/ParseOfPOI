@@ -1,9 +1,13 @@
 # Project exclude paths
 /dosomething/target/
 /.idea/
+*.class
+*/target/
+/logs/
 /newparent.iml
 dosomething/src/main/resources/templates/
 dosomething/src/test/
 src/
 /WeChatControl/
+/Utils/
 dosomething/Dockerfile

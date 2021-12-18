@@ -3,7 +3,7 @@ package com.example.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.service.WeChatService;
-import com.example.util.HttpUtil;
+import com.example.utils.HttpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -25,9 +25,7 @@ public class WeChatServiceImpl implements WeChatService {
      * 先定义链接，在这里因为appID和secret还没有被注入，所以只能先声明，在调用的时候再去替换
      */
     private String getTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=SECRET";
-
     private String createMenuUrl = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
-
 
     @Autowired
     private RedisTemplate redisTemplate;
