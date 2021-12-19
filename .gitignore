@@ -3,6 +3,7 @@
 /.idea/
 *.class
 */target/
+*/test/
 /logs/
 /newparent.iml
 dosomething/src/main/resources/templates/
@@ -10,3 +11,4 @@ dosomething/src/test/
 src/
 /WeChatControl/
 dosomething/Dockerfile
+*.DS_Store
