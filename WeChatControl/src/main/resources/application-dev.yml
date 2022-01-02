@@ -18,9 +18,9 @@ spring:
 #    cache: false
   #使用alibaba数据源建立数据库连接
   datasource:
-    url: jdbc:mysql://47.115.60.225:3310/Test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: lh1234
+    password: 12345678
     hikari:
       maximum-pool-size: 30
       minimum-idle: 10
