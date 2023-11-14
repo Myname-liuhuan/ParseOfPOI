@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author 刘欢
  * @Date 2020/11/28
  */
-@MapperScan("com.example.mapper")
+@MapperScan("com.example.dao")
 @SpringBootApplication
 public class ControlStart {
 	public static void main(String[] args) {

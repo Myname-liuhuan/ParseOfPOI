@@ -28,7 +28,7 @@ public class WeChatServiceImpl implements WeChatService {
     private String createMenuUrl = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     /**
      * 默认的菜单栏,要注意java中的json字符串就是双引号，没法像js中那样随心所欲的写单引号或者不写
@@ -42,7 +42,7 @@ public class WeChatServiceImpl implements WeChatService {
                 menuStr = defaultMenu;
             }
             JSONObject menuJSON = JSON.parseObject(menuStr);
-            String access_token = (String) redisTemplate.opsForValue().get("access_token");
+            String access_token = redisTemplate.opsForValue().get("access_token");
             createMenuUrl = createMenuUrl.replaceAll("ACCESS_TOKEN", access_token);
             String res = HttpUtil.sendPost(createMenuUrl,menuStr);
             System.out.println(res);

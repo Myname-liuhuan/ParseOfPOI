@@ -32,10 +32,10 @@ spring:
   #redis配置
   redis:
     database: 0
-    host: 47.115.60.225
+    host: localhost
     port: 6379
     timeout: 3000
-    password: lh1234
+    password:
     lettuce:
       pool:
         min-idle: 5

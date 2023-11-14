@@ -18,6 +18,8 @@ public class WxOperation {
     private String createMenuUrl = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 
 
+    public WxOperation(){}
+
     public WxOperation(String appid, String secret){
         APPID = appid;
         SECRET = secret;
@@ -59,6 +61,17 @@ public class WxOperation {
         getTokenUrl = getTokenUrl.replaceAll("APPID",APPID).replaceAll("SECRET",SECRET);
         String s = HttpUtil.sendGet(getTokenUrl, null);
         return s;
+    }
+
+    /**
+     * 发送模版消息
+     */
+    public void sendTemplate(){
+        
+    }
+
+    public static void main(String[] args) {
+        new WxOperation().sendTemplate();
     }
 
 

@@ -7,10 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="WeChatControl" />
         <module name="GroupMap" />
         <module name="Utils" />
         <module name="dosomething" />
-        <module name="WeChatControl" />
       </profile>
     </annotationProcessing>
   </component>
